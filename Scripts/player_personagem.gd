@@ -24,9 +24,9 @@ func _physics_process(_delta: float) -> void:
 func move() -> void:
 	var direction_vector: Vector2 = Vector2(0, 0)
 
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("move_right") and not (Input.is_action_pressed("move_down") or Input.is_action_pressed("move_up") ):
 		direction_vector.x += 1
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left") and not (Input.is_action_pressed("move_down") or Input.is_action_pressed("move_up") ):
 		direction_vector.x -= 1
 	if Input.is_action_pressed("move_down"):
 		direction_vector.y += 1
@@ -57,10 +57,6 @@ func animate() ->void:
 		_state_machine.travel("run")
 		return
 	_state_machine.travel("idle")
-	
-		
-
-
 func _on_attack_timer_timeout():
 	set_physics_process(true)
 	is_attacking = false

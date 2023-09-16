@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm78cg3807yra"]
+
+[ext_resource type="PackedScene" uid="uid://bcvd1dog57cbt" path="res://Scenes/player_personagem.tscn" id="1_q85kc"]
+
+[node name="PlayerPersonagem" instance=ExtResource("1_q85kc")]
+friction = 0.2
+aceceleration = 0.2
