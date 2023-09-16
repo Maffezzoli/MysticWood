@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ox6cdqcrd4dq"]
+
+[ext_resource type="PackedScene" uid="uid://datbopwtllkha" path="res://Scenes/terrain.tscn" id="1_773ag"]
+[ext_resource type="PackedScene" uid="uid://bcvd1dog57cbt" path="res://Scenes/player_personagem.tscn" id="2_jqnoc"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="TileMap" parent="Terrain" instance=ExtResource("1_773ag")]
+
+[node name="PlayerPersonagem" parent="." instance=ExtResource("2_jqnoc")]
+position = Vector2(157, 133)
