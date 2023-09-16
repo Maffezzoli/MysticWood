@@ -11,3 +11,4 @@
 
 [node name="PlayerPersonagem" parent="." instance=ExtResource("2_jqnoc")]
 position = Vector2(157, 133)
+speed = 0.0
