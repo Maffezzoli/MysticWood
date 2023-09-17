@@ -60,3 +60,7 @@ func animate() ->void:
 func _on_attack_timer_timeout():
 	set_physics_process(true)
 	is_attacking = false
+	
+func _on_attack_area_body_entered(body) -> void:
+	if body.is_in_group("enemy"):
+		body.update_health(randi_range(1,5))
