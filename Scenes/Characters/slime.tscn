@@ -1,0 +1,117 @@
+[gd_scene load_steps=11 format=3 uid="uid://dukd8vghbb06l"]
+
+[ext_resource type="Script" path="res://Scripts/slime.gd" id="1_2b31r"]
+[ext_resource type="Texture2D" uid="uid://daxuk8fm25xd4" path="res://Sprites/sprites/characters/slime.png" id="1_vb1om"]
+
+[sub_resource type="Animation" id="Animation_0qx04"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_kuqc5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_sosmb"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_fnf7p"]
+resource_name = "dead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tlxi5"]
+_data = {
+"RESET": SubResource("Animation_kuqc5"),
+"dead": SubResource("Animation_fnf7p"),
+"idle": SubResource("Animation_0qx04"),
+"walk": SubResource("Animation_sosmb")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ecwl"]
+size = Vector2(16, 17.75)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_38hrq"]
+radius = 81.0062
+
+[sub_resource type="GDScript" id="GDScript_kciy1"]
+
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("texture", "animation") groups=["enemy"]]
+script = ExtResource("1_2b31r")
+speed = 40
+texture = NodePath("Texture")
+animation = NodePath("Texture/AnimationPlayer")
+
+[node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(17, 8)
+texture = ExtResource("1_vb1om")
+hframes = 7
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Texture"]
+libraries = {
+"": SubResource("AnimationLibrary_tlxi5")
+}
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(17, 11.125)
+shape = SubResource("RectangleShape2D_1ecwl")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+show_behind_parent = true
+position = Vector2(18, 10)
+shape = SubResource("CircleShape2D_38hrq")
+script = SubResource("GDScript_kciy1")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

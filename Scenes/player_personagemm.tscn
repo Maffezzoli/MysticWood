@@ -4,15 +4,12 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sv6cw"]
 
-[node name="PlayerPersonagem" instance=ExtResource("1_q85kc")]
+[node name="PlayerPersonagem" groups=["character"] instance=ExtResource("1_q85kc")]
 friction = 0.2
 aceceleration = 0.2
 
 [node name="Collision" parent="." index="2"]
-position = Vector2(0, 17.75)
-
-[node name="AnimationTree" parent="." index="3"]
-active = false
+position = Vector2(0.5, 17.25)
 
 [node name="AttackArea" type="Area2D" parent="." index="5"]
 
@@ -21,5 +18,8 @@ position = Vector2(0, 24)
 scale = Vector2(-0.959, 1)
 shape = SubResource("RectangleShape2D_sv6cw")
 disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="." index="6"]
+position = Vector2(0, 15)
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

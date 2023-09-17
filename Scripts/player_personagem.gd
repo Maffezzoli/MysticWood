@@ -1,8 +1,7 @@
 extends CharacterBody2D
-
+class_name character
 var _state_machine
 var is_attacking: bool = false
-var mov_lock: bool = true
 @export_category("Variables")
 @export var speed: float = 0
 @export var friction: float = 0.2
@@ -14,6 +13,7 @@ var mov_lock: bool = true
 
 func _ready() -> void:
 	_state_machine = animation_tree["parameters/playback"]
+	animation_tree.active = true
 
 func _physics_process(_delta: float) -> void:
 	move()
