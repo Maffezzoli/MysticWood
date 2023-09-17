@@ -1,20 +1,22 @@
 [gd_scene load_steps=3 format=3 uid="uid://dm78cg3807yra"]
 
-[ext_resource type="PackedScene" uid="uid://bcvd1dog57cbt" path="res://Scenes/player_personagem.tscn" id="1_q85kc"]
+[ext_resource type="PackedScene" uid="uid://s7mh18ciwelv" path="res://Scenes/player_personagem.tscn" id="1_q85kc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sv6cw"]
 
 [node name="PlayerPersonagem" groups=["character"] instance=ExtResource("1_q85kc")]
-friction = 0.2
-aceceleration = 0.2
 
 [node name="Collision" parent="." index="2"]
 position = Vector2(0.5, 17.25)
 
+[node name="AnimationTree" parent="." index="3"]
+active = false
+parameters/dead/blend_position = Vector2(0, 0)
+
 [node name="AttackArea" type="Area2D" parent="." index="5"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" index="0"]
-position = Vector2(0, 24)
+position = Vector2(10, 20)
 scale = Vector2(-0.959, 1)
 shape = SubResource("RectangleShape2D_sv6cw")
 disabled = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ox6cdqcrd4dq"]
 
 [ext_resource type="PackedScene" uid="uid://datbopwtllkha" path="res://Scenes/terrain.tscn" id="1_773ag"]
-[ext_resource type="PackedScene" uid="uid://bcvd1dog57cbt" path="res://Scenes/player_personagem.tscn" id="2_jqnoc"]
+[ext_resource type="PackedScene" uid="uid://s7mh18ciwelv" path="res://Scenes/player_personagem.tscn" id="2_jqnoc"]
 
 [node name="Level" type="Node2D"]
 

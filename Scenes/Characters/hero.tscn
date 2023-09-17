@@ -1,11 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://s7mh18ciwelv"]
+[gd_scene load_steps=35 format=3 uid="uid://6ko5kvlg0cja"]
 
-[ext_resource type="Script" path="res://Scripts/player_personagem.gd" id="1_sdw7l"]
-[ext_resource type="Texture2D" uid="uid://yke5e50osvet" path="res://Sprites/sprites/characters/player.png" id="1_wedyh"]
+[ext_resource type="Texture2D" uid="uid://yke5e50osvet" path="res://Sprites/sprites/characters/player.png" id="1_4bc5a"]
 
 [sub_resource type="Animation" id="Animation_ub3ol"]
 resource_name = "Dead"
 length = 0.3
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -163,42 +163,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-0.5, 0)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/CollisionShape2D:shape:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(20, 20)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/CollisionShape2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(10, 20)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea/CollisionShape2D:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_uuqpg"]
 resource_name = "attack_down"
@@ -320,42 +284,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-0.5, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/CollisionShape2D:shape:size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(20, 20)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/CollisionShape2D:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(10, 20)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea/CollisionShape2D:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_b27of"]
@@ -662,7 +590,7 @@ _data = {
 "run_top": SubResource("Animation_r51nr")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1yqi"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3yvfh"]
 size = Vector2(7.5, 7)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m1i5u"]
@@ -685,29 +613,6 @@ blend_point_1/pos = Vector2(0, -1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_1omkl")
 blend_point_2/pos = Vector2(1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_3nc3f")
-blend_point_3/pos = Vector2(-1, 0)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2vda6"]
-animation = &"Dead"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ejtn0"]
-animation = &"Dead"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vgm13"]
-animation = &"Dead"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mbfvk"]
-animation = &"Dead"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_mjcib"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_2vda6")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_ejtn0")
-blend_point_1/pos = Vector2(0, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_vgm13")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_mbfvk")
 blend_point_3/pos = Vector2(-1, 0)
 blend_mode = 1
 
@@ -757,27 +662,23 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_vumu5")
 blend_point_3/pos = Vector2(-1, 0)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4nplv"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ad51q"]
 states/End/position = Vector2(829, 100)
 states/Start/position = Vector2(190, 100)
 states/attack/node = SubResource("AnimationNodeBlendSpace2D_nwtw1")
 states/attack/position = Vector2(430, 113)
-states/dead/node = SubResource("AnimationNodeBlendSpace2D_mjcib")
-states/dead/position = Vector2(258, 325)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_3y1hc")
 states/idle/position = Vector2(496, 270)
 states/run/node = SubResource("AnimationNodeBlendSpace2D_83a7f")
 states/run/position = Vector2(332, 187)
 graph_offset = Vector2(-55, 10)
 
-[node name="PlayerPersonagem" type="CharacterBody2D" node_paths=PackedStringArray("attack_timer", "animation_tree")]
-script = ExtResource("1_sdw7l")
-speed = 60.0
-attack_timer = NodePath("AttackTimer")
-animation_tree = NodePath("AnimationTree")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e23jd"]
+
+[node name="hero" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_wedyh")
+texture = ExtResource("1_4bc5a")
 offset = Vector2(-0.5, 0)
 hframes = 6
 vframes = 10
@@ -789,15 +690,13 @@ libraries = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_h1yqi")
+position = Vector2(0.5, 17.25)
+shape = SubResource("RectangleShape2D_3yvfh")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_4nplv")
+tree_root = SubResource("AnimationNodeStateMachine_ad51q")
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/attack/blend_position = Vector2(0, 0)
-parameters/dead/blend_position = Vector2(-0.00160003, 0.987281)
 parameters/idle/blend_position = Vector2(0, 0)
 parameters/run/blend_position = Vector2(0, 0)
 
@@ -805,4 +704,13 @@ parameters/run/blend_position = Vector2(0, 0)
 wait_time = 0.4
 one_shot = true
 
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 24)
+scale = Vector2(-0.959, 1)
+shape = SubResource("RectangleShape2D_e23jd")
+disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 15)
